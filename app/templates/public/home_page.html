@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row">
+<div class="col" style="padding-right:0px;">
+<nav class="bg-light sidebar">
+    <div class="sidebar-sticky">
+      <h4 style="text-align: center;">Rooms</h4>
+        
+        {% if current_user.is_authenticated %}
+        <div class="card">
+          <div class="card-body">
+            This is some text within a card body.
+          </div>
+        </div>
+        
+        <ul class="list-group list-group-flush">
+        {% for room in rooms %}
+        <div class="card">
+          <div class="card-body">
+            <li class="list-group-item"><a href="rooms/{{ room._id.room_id }}">{{ room.room_name }}</a></li>
+          </div>
+        </div>
+            
+        {% endfor %}
+        </ul>
+        {% endif %}
+        
+      </ul>
+    </div>
+  </nav>
+</div>
+<div class="container col-lg-9" style="padding-left:0px;">
+    {% block message %}
+    {% endblock %}
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% macro render_field_with_errors(feildName) %}
+<div class="form-group">
+  {{ feildName.label }}
+  {% if feildName.errors %}
+      {{ feildName(class="form-control form-control-md is-invalid") }}
+      <div class="invalid-feedback">
+          {% for error in feildName.errors %}
+              <span>{{ error }}</span>
+          {% endfor %}
+      </div>
+          {% else %}  
+            {{ feildName(class="form-control form-control-md", **kwargs)}}
+    {% endif %}
+</div>  
+{% endmacro %}
+
+{% macro render_field(fieldName) %}
+
+  {{ fieldName(**kwargs)|safe }}
+
+{% endmacro %}

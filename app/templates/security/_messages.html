@@ -1,0 +1,60 @@
+<div class="container">
+  {% with messages = get_flashed_messages(category_filter=["error"]) %}
+  {% if messages %}
+  <div aria-live="polite" aria-atomic="true" class="position-relative">
+      <div class="toast-container position-absolute top-0 end-0 p-3">
+        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header">
+            <strong class="me-auto">Notification</strong>
+            <small class="text-muted">just now</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div class="toast-body text-danger">
+              {% for message in messages %}
+              {{message}}
+              {% endfor %}
+          </div>
+        </div>
+    </div>
+    
+  {% endif %}
+{% endwith %}
+  
+  {% with messages = get_flashed_messages(category_filter=["success"]) %}
+      {% if messages %}
+      <div aria-live="polite" aria-atomic="true" class="position-relative">
+          <div class="toast-container position-absolute top-0 end-0 p-3">
+            <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+              <div class="toast-header">
+                <strong class="me-auto">Notification</strong>
+                <small class="text-muted">just now</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+              </div>
+              <div class="toast-body text-success">
+                  {% for message in messages %}
+                  {{message}}
+                  {% endfor %}
+              </div>
+            </div>
+        </div>
+        
+      {% endif %}
+  {% endwith %}
+
+  <script>
+    function see() {
+      var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+      var toastList = toastElList.map(function(toastEl) {
+      // Creates an array of toasts (it only initializes them)
+        return new bootstrap.Toast(toastEl) // No need for options; use the default options
+      });
+     toastList.forEach(toast => toast.show()); // This show them
+  
+      console.log(toastList); // Testing to see if it works
+    };
+    {% if True %}
+    window.see()
+    {% endif %}
+  </script>
+
+</div>

@@ -1,0 +1,22 @@
+{% extends "mod/index.html" %}
+{% block body %}
+<table class="table table-light mb-2">
+    <tbody>
+      <tr>
+        <th scope="row"></th>
+        <td>Username</td>
+        <td>{{current_user.username}}</td>
+      </tr>
+      <tr>
+        <th scope="row"></th>
+        <td>Email</td>
+        <td>{{current_user.email}}</td>
+      </tr>
+      <tr>
+        <th scope="row"></th>
+        <td>Role</td>
+        <td>Moderator</td>
+      </tr>
+    </tbody>
+  </table>
+{% endblock %}
